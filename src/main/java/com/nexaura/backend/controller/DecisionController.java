@@ -1,6 +1,7 @@
 package com.nexaura.backend.controller;
 
-import com.nexaura.backend.entity.Decision;
+import com.nexaura.backend.dto.DecisionRequest;
+import com.nexaura.backend.dto.DecisionResponse;
 import com.nexaura.backend.service.DecisionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class DecisionController {
     }
 
     @PostMapping
-    public Decision createDecision(@RequestBody Decision decision) {
-        return decisionService.saveDecision(decision);
+    public DecisionResponse createDecision(@RequestBody DecisionRequest request) {
+        return decisionService.saveDecision(request);
     }
 }
