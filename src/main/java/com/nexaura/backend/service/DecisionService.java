@@ -6,6 +6,8 @@ import com.nexaura.backend.entity.Decision;
 import com.nexaura.backend.mapper.DecisionMapper;
 import com.nexaura.backend.repository.DecisionRepository;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import com.nexaura.backend.exception.ResourceNotFoundException;
 
 @Service
 public class DecisionService {
@@ -26,5 +28,24 @@ public class DecisionService {
         Decision savedDecision = decisionRepository.save(decision);
 
         return decisionMapper.toResponse(savedDecision);
+    }
+    public DecisionResponse getDecisionById(Long id) {
+
+    Decision decision = decisionRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException(
+                    "Decision not found with id: " + id
+            ));
+
+    return decisionMapper.toResponse(decision);
+}
+
+    public List<DecisionResponse> getAllDecisions() {
+
+        List<Decision> decisions = decisionRepository.findAll();
+
+        return decisions.stream()
+                .map(decisionMapper::toResponse)
+                .toList();
+                
     }
 }
