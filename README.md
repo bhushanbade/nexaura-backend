@@ -4,7 +4,7 @@
 
 # Project Status
 ~Currently under active development.
-~Completed through Sprint 4.
+~Completed through Sprint 8.
 
 # About
 Nexaura is an AI-powered Decision Intelligence Platform designed to help users make smarter decisions through structured analysis and intelligent recommendations.
@@ -37,7 +37,7 @@ The project is being developed incrementally using sprint-based development to s
 | Postman         | API Testing          |
 
 # Architecture
-```text
+```
                 Client
                    │
                    ▼
@@ -91,14 +91,18 @@ mvn spring-boot:run
 | Database Name | nexaura |
 
 # Sprint Progress
-| Sprint   | Status | Topics             |
-| -------- | ------ | ------------------ |
-| Sprint 1 |   ✅   | Spring Boot Setup  |
-| Sprint 2 |   ✅   | Exception Handling |
-| Sprint 3 |   ✅   | Entity & JPA       |
-| Sprint 4 |   ✅   | DTO & Mapper       |
-| Sprint 5 |   🚧   | Validation         |
+| Sprint   | Status | Topics                          |
+| -------- | ------ | ------------------------------- |
+| Sprint 1 | ✅     | Spring Boot Setup               |
+| Sprint 2 | ✅     | Exception Handling              |
+| Sprint 3 | ✅     | Entity & JPA                    |
+| Sprint 4 | ✅     | DTO & Mapper                    |
+| Sprint 5 | ✅     | Validation                      |
+| Sprint 6 | ✅     | Read APIs – GET All & GET By ID |
+| Sprint 7 | ✅     | Update API – PUT                |
+| Sprint 8 | ✅     | Delete API – DELETE             |
 
+                    
 # Project Goals
 - Learn enterprise backend development
 - Build production-style REST APIs
@@ -107,13 +111,12 @@ mvn spring-boot:run
 - Prepare for software engineering internships
 
 # Roadmap
-
 - [x] Spring Boot Setup
 - [x] Exception Handling
 - [x] Decision API
 - [x] DTO & Mapper
-- [ ] Validation
-- [ ] CRUD Operations
+- [x] Validation
+- [x] CRUD Operations
 - [ ] Authentication
 - [ ] Swagger
 - [ ] Docker
