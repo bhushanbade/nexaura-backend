@@ -38,6 +38,20 @@ public class DecisionService {
 
     return decisionMapper.toResponse(decision);
 }
+public DecisionResponse updateDecision(Long id, DecisionRequest request) {
+
+    Decision decision = decisionRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException(
+                    "Decision not found with id: " + id
+            ));
+    decision.setTitle(request.getTitle());
+    decision.setDescription(request.getDescription());
+    decision.setStatus(request.getStatus());
+
+    Decision updatedDecision = decisionRepository.save(decision);
+
+    return decisionMapper.toResponse(updatedDecision);
+}
 
     public List<DecisionResponse> getAllDecisions() {
 

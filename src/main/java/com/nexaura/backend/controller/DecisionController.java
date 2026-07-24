@@ -30,4 +30,12 @@ public class DecisionController {
 public DecisionResponse getDecisionById(@PathVariable Long id) {
     return decisionService.getDecisionById(id);
 }
+@PutMapping("/{id}")
+public DecisionResponse updateDecision(
+        @PathVariable Long id,
+        @Valid @RequestBody DecisionRequest request) {
+
+    return decisionService.updateDecision(id, request);
+}
+
 }
