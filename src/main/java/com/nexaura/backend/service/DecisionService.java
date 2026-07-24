@@ -52,6 +52,15 @@ public DecisionResponse updateDecision(Long id, DecisionRequest request) {
 
     return decisionMapper.toResponse(updatedDecision);
 }
+public void deleteDecision(Long id) {
+
+    Decision decision = decisionRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException(
+                    "Decision not found with id: " + id
+            ));
+
+    decisionRepository.delete(decision);
+}
 
     public List<DecisionResponse> getAllDecisions() {
 

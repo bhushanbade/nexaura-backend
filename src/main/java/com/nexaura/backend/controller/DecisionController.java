@@ -4,6 +4,8 @@ import com.nexaura.backend.dto.DecisionRequest;
 import com.nexaura.backend.dto.DecisionResponse;
 import com.nexaura.backend.service.DecisionService;
 import jakarta.validation.Valid;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -37,5 +39,11 @@ public DecisionResponse updateDecision(
 
     return decisionService.updateDecision(id, request);
 }
+@DeleteMapping("/{id}")
+public ResponseEntity<Void> deleteDecision(@PathVariable Long id) {
 
+    decisionService.deleteDecision(id);
+
+    return ResponseEntity.noContent().build();
+}
 }
