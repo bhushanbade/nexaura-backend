@@ -34,6 +34,18 @@ public Page<DecisionResponse> getAllDecisions(Pageable pageable) {
 public DecisionResponse getDecisionById(@PathVariable Long id) {
     return decisionService.getDecisionById(id);
 }
+@GetMapping("/status/{status}")
+public List<DecisionResponse> getDecisionsByStatus(
+        @PathVariable String status) {
+
+    return decisionService.getDecisionsByStatus(status);
+}
+@GetMapping("/search")
+public List<DecisionResponse> searchDecisionsByTitle(
+        @RequestParam String title) {
+
+    return decisionService.searchDecisionsByTitle(title);
+}
 @PutMapping("/{id}")
 public DecisionResponse updateDecision(
         @PathVariable Long id,

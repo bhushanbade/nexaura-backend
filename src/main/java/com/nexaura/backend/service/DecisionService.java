@@ -71,4 +71,21 @@ public void deleteDecision(Long id) {
     return decisions.map(decisionMapper::toResponse);
                 
     }
+    public List<DecisionResponse> getDecisionsByStatus(String status) {
+
+    List<Decision> decisions = decisionRepository.findByStatus(status);
+
+    return decisions.stream()
+            .map(decisionMapper::toResponse)
+            .toList();
+}
+public List<DecisionResponse> searchDecisionsByTitle(String title) {
+
+    List<Decision> decisions =
+            decisionRepository.findByTitleContainingIgnoreCase(title);
+
+    return decisions.stream()
+            .map(decisionMapper::toResponse)
+            .toList();
+}
 }
