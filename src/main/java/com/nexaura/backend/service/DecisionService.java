@@ -8,6 +8,8 @@ import com.nexaura.backend.repository.DecisionRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.nexaura.backend.exception.ResourceNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class DecisionService {
@@ -62,13 +64,11 @@ public void deleteDecision(Long id) {
     decisionRepository.delete(decision);
 }
 
-    public List<DecisionResponse> getAllDecisions() {
+   public Page<DecisionResponse> getAllDecisions(Pageable pageable) {
 
-        List<Decision> decisions = decisionRepository.findAll();
+    Page<Decision> decisions = decisionRepository.findAll(pageable);
 
-        return decisions.stream()
-                .map(decisionMapper::toResponse)
-                .toList();
+    return decisions.map(decisionMapper::toResponse);
                 
     }
 }

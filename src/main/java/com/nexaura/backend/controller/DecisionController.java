@@ -8,6 +8,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @RestController
 @RequestMapping("/decisions")
@@ -25,9 +27,9 @@ public class DecisionController {
     }
 
     @GetMapping
-    public List<DecisionResponse> getAllDecisions() {
-        return decisionService.getAllDecisions();
-    }
+public Page<DecisionResponse> getAllDecisions(Pageable pageable) {
+    return decisionService.getAllDecisions(pageable);
+}
     @GetMapping("/{id}")
 public DecisionResponse getDecisionById(@PathVariable Long id) {
     return decisionService.getDecisionById(id);
