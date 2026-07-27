@@ -22,6 +22,9 @@ public class DecisionRequest {
     private String description;
 
     @NotBlank(message = "Status cannot be blank")
+    
     private String status;
 
+    private Long userId;
+ 
 }

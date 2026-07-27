@@ -1,7 +1,9 @@
 package com.nexaura.backend.controller;
 
+import com.nexaura.backend.dto.DecisionResponse;
 import com.nexaura.backend.dto.UserRequest;
 import com.nexaura.backend.dto.UserResponse;
+import com.nexaura.backend.service.DecisionService;
 import com.nexaura.backend.service.UserService;
 
 import jakarta.validation.Valid;
@@ -15,10 +17,20 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+private final DecisionService decisionService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+   public UserController(UserService userService,
+                      DecisionService decisionService) {
+
+    this.userService = userService;
+    this.decisionService = decisionService;
+}
+@GetMapping("/{id}/decisions")
+public List<DecisionResponse> getUserDecisions(
+        @PathVariable Long id) {
+
+    return decisionService.getDecisionsByUser(id);
+}
 
     @PostMapping
     public UserResponse createUser(
@@ -47,4 +59,5 @@ public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
 
     return ResponseEntity.noContent().build();
 }
+
 }

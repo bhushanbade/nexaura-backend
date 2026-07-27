@@ -31,6 +31,9 @@ public class DecisionMapper {
         response.setDescription(decision.getDescription());
         response.setStatus(decision.getStatus());
         response.setCreatedAt(decision.getCreatedAt());
+        if (decision.getUser() != null) {
+    response.setUserId(decision.getUser().getId());
+}
 
         return response;
     }

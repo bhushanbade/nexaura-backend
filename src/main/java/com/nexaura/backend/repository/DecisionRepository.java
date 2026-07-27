@@ -9,4 +9,5 @@ import java.util.List;
 public interface DecisionRepository extends JpaRepository<Decision, Long> {
 List<Decision> findByStatus(String status);
 List<Decision> findByTitleContainingIgnoreCase(String title);
+List<Decision> findByUserId(Long userId);
 }

@@ -20,5 +20,7 @@ public class DecisionResponse {
     private String status;
 
     private LocalDateTime createdAt;
+    
+    private Long userId;
 
 }
